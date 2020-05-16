@@ -51,13 +51,13 @@ $('.submit').click(e => {
         showAlert('danger', erorrs);
     } else {
         resetAlert();
-        saveData(
-            $('#name').val(),
-            $('#email').val(),
-            $('#number').val(),
-            $('#company').val(),
-            $('#message').val()
-        );
+        // saveData(
+        //     $('#name').val(),
+        //     $('#email').val(),
+        //     $('#number').val(),
+        //     $('#company').val(),
+        //     $('#message').val()
+        // );
         resetForm();
         showAlert('success', "Message Sent Successfully");
     }
