@@ -1,30 +1,37 @@
 // firebase keys
 const firebaseConfig = {
-    apiKey: "AIzaSyC3sIXf8cwi_cQ17KROiSkmXjEZjUhvT1k",
-    authDomain: "contact-form-a3a20.firebaseapp.com",
-    databaseURL: "https://contact-form-a3a20.firebaseio.com",
-    projectId: "contact-form-a3a20",
-    storageBucket: "contact-form-a3a20.appspot.com",
-    messagingSenderId: "814166570273",
-    appId: "1:814166570273:web:b32bb575b32aced75aba60",
-    measurementId: "G-QDK13EJ704"
+    apiKey: "AIzaSyBYeMyvuQqk2F7KnFBX8lzk0qppImpp658",
+    authDomain: "firestore-nil.firebaseapp.com",
+    databaseURL: "https://firestore-nil.firebaseio.com",
+    projectId: "firestore-nil",
+    storageBucket: "firestore-nil.appspot.com",
+    messagingSenderId: "922386917778",
+    appId: "1:922386917778:web:f0b5e3ba002ac57c2db94b",
+    measurementId: "G-9ZGRV0SRLV"
 };
 
 // firebase initialization
 firebase.initializeApp(firebaseConfig);
-// database connect
-const messagesRef = firebase.database().ref('messages');
+
+// Firestore Refs
+const db = firebase.firestore();
 
 // Save data in database
 function saveData(name, email, number, company, message) {
-    let newMesssageRef = messagesRef.push();
-    newMesssageRef.set({
-        name: name,
-        email: email,
-        phoneNumber: number,
-        company: company,
-        message: message
-    });
+    db.collection("Contact-Request").add({
+            name: name,
+            email: email,
+            phoneNumber: number,
+            company: company,
+            message: message
+        })
+        .then(function (docRef) {
+            showAlert('success', "Message Sent Successfully");
+        })
+        .catch(function (error) {
+            console.error("Error adding document: ", error);
+            showAlert('danger', "Sorry! Error occurred while saving Message");
+        });
 }
 
 // Handle Submit 
@@ -51,15 +58,14 @@ $('.submit').click(e => {
         showAlert('danger', erorrs);
     } else {
         resetAlert();
-        // saveData(
-        //     $('#name').val(),
-        //     $('#email').val(),
-        //     $('#number').val(),
-        //     $('#company').val(),
-        //     $('#message').val()
-        // );
+        saveData(
+            $('#name').val(),
+            $('#email').val(),
+            $('#number').val(),
+            $('#company').val(),
+            $('#message').val()
+        );
         resetForm();
-        showAlert('success', "Message Sent Successfully");
     }
 });
 

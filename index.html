@@ -8,15 +8,43 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
     <style>
-         ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             width: 0;
         }
-        
-         ::selection {
+
+        ::selection {
             color: rgb(117, 9, 9);
             background: rgb(209, 216, 206);
         }
+
+        * {
+            outline: none !important;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media screen and (max-width: 600px) {
+            body {
+                height: fit-content;
+            }
+
+            .display-4 {
+                font-size: 1.8rem;
+            }
+
+            .lead {
+                font-size: 12px;
+            }
+        }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -58,14 +86,12 @@
                         <label for="inputAddress">Message</label>
                         <textarea class="form-control" cols="20" rows="5" id="message"></textarea>
                     </div>
-                    <button type="submit" class="submit btn btn-primary mt-2" style="min-width: 30%;">Send Message</button>
+                    <button type="submit" class="submit btn btn-primary mt-2" style="min-width: 30%;">Send
+                        Message</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="main.js"></script>
 </body>
 
