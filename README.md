@@ -1,8 +1,8 @@
 ## Contact Form using Firebase.
 
-##### This site is live [here](https://fir-functions-nil.web.app/).
+- This site is live [here](https://fir-functions-nil.web.app/).
 
-##### Github Repository [link](https://github.com/firebase-contact).
+- Github Repository [link](https://github.com/firebase-contact).
 
 ---
 
