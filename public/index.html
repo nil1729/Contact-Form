@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firebase Contact Requests</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+  <style>
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    ::selection {
+      color: rgb(117, 9, 9);
+      background: rgb(209, 216, 206);
+    }
+
+    * {
+      outline: none !important;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      body {
+        height: fit-content;
+      }
+
+      .display-4 {
+        font-size: 1.8rem;
+      }
+
+      .lead {
+        font-size: 12px;
+      }
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+  <script src="/__/firebase/7.15.5/firebase-functions.js"></script>
+  <script src="/__/firebase/init.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center my-0 p-4 animate__animated animate__bounceInLeft">
+      <h2 class="display-4 text-center">Firebase Contact Form</h2>
+      <hr class="my-1">
+      <p class="lead">This is a Simple Contact Form integrated With <strong>Firebase</strong></p>
+      <hr class="my-2">
+      <div class="alert alert-dismissible">
+        <div class="msg"></div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="display: none;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">Name</label>
+              <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="company">Company Name</label>
+              <input type="text" class="form-control" id="company">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputPassword4">Phone Number</label>
+              <input type="tel" class="form-control" id="number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Message</label>
+            <textarea class="form-control" cols="20" rows="5" id="message"></textarea>
+          </div>
+          <button type="submit" class="submit btn btn-primary mt-2" style="min-width: 30%;">Send
+            Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

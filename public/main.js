@@ -1,37 +1,17 @@
-// firebase keys
-const firebaseConfig = {
-    apiKey: "AIzaSyBYeMyvuQqk2F7KnFBX8lzk0qppImpp658",
-    authDomain: "firestore-nil.firebaseapp.com",
-    databaseURL: "https://firestore-nil.firebaseio.com",
-    projectId: "firestore-nil",
-    storageBucket: "firestore-nil.appspot.com",
-    messagingSenderId: "922386917778",
-    appId: "1:922386917778:web:f0b5e3ba002ac57c2db94b",
-    measurementId: "G-9ZGRV0SRLV"
-};
-
-// firebase initialization
-firebase.initializeApp(firebaseConfig);
-
-// Firestore Refs
-const db = firebase.firestore();
-
-// Save data in database
 function saveData(name, email, number, company, message) {
-    db.collection("Contact-Request").add({
-            name: name,
-            email: email,
-            phoneNumber: number,
-            company: company,
-            message: message
+    const data = {
+        name: name,
+        email: email,
+        phoneNumber: number,
+        company: company,
+        message: message
+    };
+    const save = firebase.functions().httpsCallable('saveData');
+    save(data)
+        .then(result => {
+            showAlert('success', result.data);
         })
-        .then(function (docRef) {
-            showAlert('success', "Message Sent Successfully");
-        })
-        .catch(function (error) {
-            console.error("Error adding document: ", error);
-            showAlert('danger', "Sorry! Error occurred while saving Message");
-        });
+        .catch(error => console.log(error));
 }
 
 // Handle Submit 
